@@ -43,10 +43,7 @@ jobs:
   build:
     name: Build ${{ inputs.package_name }}
     timeout-minutes: 720
-    runs-on: >-
-      ${{ fromJson(inputs.runner_arch == 'aarch64'
-        && '["Windows", "ARM64", "MSYS2"]'
-        || '["windows-latest"]') }}
+    runs-on: ${{ inputs.runner_arch == 'aarch64' && 'windows-arm64' || 'windows-latest' }}
 
     steps:
       - name: Kill hanging processes
