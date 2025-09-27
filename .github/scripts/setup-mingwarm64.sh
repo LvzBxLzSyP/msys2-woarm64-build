@@ -12,7 +12,7 @@ apply_patch () {
   if patch -R -p1 --dry-run -b -i "$1" > /dev/null 2>&1; then
     echo "Patch $1 is already applied"
   else
-    git apply "$1"
+    git apply --whitespace=fix "$1"
   fi
 }
 
