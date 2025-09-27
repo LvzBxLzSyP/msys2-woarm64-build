@@ -9,6 +9,7 @@ else
 fi
 
 apply_patch () {
+  dos2unix "$1" 2>/dev/null || true  # 先轉成 LF
   if patch -R -p1 --dry-run -b -i "$1" > /dev/null 2>&1; then
     echo "Patch $1 is already applied"
   else
